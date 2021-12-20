@@ -1,6 +1,9 @@
 import numpy as np
 import random
 
+from scipy.sparse import csr_matrix, lil_matrix
+from tqdm import tqdm
+
 
 def create_data(N, alpha=0.5):  # random > alpha, then here is a edge.
     G = np.zeros((N, N))
@@ -20,8 +23,8 @@ class PageRank:
         self.map = self.get_map()
 
     def get_map(self):
-        map = np.zeros((self.node_num, self.node_num))
-        for i in range(self.node_num):
+        map = lil_matrix((self.node_num, self.node_num), dtype=np.float64)
+        for i in tqdm(range(self.node_num)):
             D_i = sum(self.graph[i])
             if D_i == 0:
                 continue
@@ -44,4 +47,3 @@ if __name__ == '__main__':
     G = create_data(10)
     pr = PageRank(G)
     print(pr.count_pr())
-

@@ -39,6 +39,7 @@ class CreateGraph:
 if __name__ == '__main__':
     # G = CreateGraph("课程设计数据集.txt").GetNx()
     # preds = nx.jaccard_coefficient(G)
+    #
     # for u, v, p in preds:
     #     print(f"({u}, {v}) -> {p:.8f}")
     G = CreateGraph("课程设计数据集.txt").GetMatrix()
