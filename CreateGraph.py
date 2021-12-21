@@ -17,6 +17,7 @@ class CreateGraph:
                 nodes.append(start_node)
                 nodes.append(end_node)
                 edges.append((start_node, end_node))
+        nodes.sort()
         self.edges = edges
         self.nodes = set(nodes)
         self.node_num = len(self.nodes)
