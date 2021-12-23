@@ -1,4 +1,6 @@
 from py2neo import Node, Graph, Relationship, NodeMatcher, data
+from tqdm import tqdm
+
 from CreateGraph import CreateGraph
 
 
@@ -12,10 +14,10 @@ def Init():
     NodeList = []
     for n in G.nodes:
         NodeList.append(Node('node', name=n))
-    for e in G.edges:
+    for e in tqdm(G.edges):
         graph.create(Relationship(NodeList[e[0] - 1], 'edge', NodeList[e[1] - 1]))
-        graph.create(Relationship(NodeList[e[1] - 1], 'edge', NodeList[e[0] - 1]))
+        # graph.create(Relationship(NodeList[e[1] - 1], 'edge', NodeList[e[0] - 1]))
 
 
 if __name__ == '__main__':
-    pass
+    Init()
