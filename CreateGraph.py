@@ -26,8 +26,13 @@ class CreateGraph:
         self.node_num = len(self.nodes)
         self.Mod = None
 
-    def GetNx(self):
+    def GetNxDi(self):
         graph = nx.DiGraph()
+        graph.add_edges_from(self.edges)
+        return graph
+
+    def GetNx(self):
+        graph = nx.Graph()
         graph.add_edges_from(self.edges)
         return graph
 
